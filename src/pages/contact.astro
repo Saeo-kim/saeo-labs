@@ -1,0 +1,334 @@
+
+---
+const inquiries = [
+  {
+    number: "01",
+    title: "Business Inquiries",
+    description: "Questions about business opportunities, partnerships, and future ventures.",
+  },
+  {
+    number: "02",
+    title: "Product Inquiries",
+    description: "Questions, ideas, and feedback related to our products and experiments.",
+  },
+  {
+    number: "03",
+    title: "Collaborations",
+    description: "Opportunities to explore ideas and create something meaningful together.",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — SAEO LABS</title>
+    <meta
+      name="description"
+      content="Get in touch with SAEO LABS."
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <a class="logo" href="/">SAEO LABS<span>®</span></a>
+
+      <nav>
+        <a href="/about">ABOUT</a>
+        <a href="/ventures">VENTURES</a>
+        <a href="/approach">APPROACH</a>
+        <a class="active" href="/contact">CONTACT</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">GET IN TOUCH</p>
+        <h1>
+          Every good idea<br />
+          starts with a <em>conversation.</em>
+        </h1>
+        <p class="intro">
+          Have a question, an idea, or an opportunity?
+          We'd be glad to hear what you're thinking.
+        </p>
+      </section>
+
+      <section class="inquiries">
+        <div class="section-heading">
+          <p class="eyebrow">CONTACT CATEGORIES</p>
+          <h2>What would you like to talk about?</h2>
+        </div>
+
+        {inquiries.map((item) => (
+          <article class="inquiry">
+            <span class="number">{item.number}</span>
+            <div class="inquiry-content">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+            <span class="arrow">↗</span>
+          </article>
+        ))}
+      </section>
+
+      <section class="note">
+        <p class="eyebrow">A NOTE FROM SAEO LABS</p>
+        <h2>
+          We're building<br />
+          <em>one step at a time.</em>
+        </h2>
+        <p>
+          Our contact channels are currently being prepared.
+          More ways to connect will be available here soon.
+        </p>
+        <a href="/ventures" class="text-link">EXPLORE OUR VENTURES ↗</a>
+      </section>
+    </main>
+
+    <footer>
+      <a class="logo" href="/">SAEO LABS<span>®</span></a>
+      <p>Independent ideas. Thoughtful experiments.</p>
+      <span>© 2026 SAEO LABS</span>
+    </footer>
+  </body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: #f7f6f2;
+    color: #252321;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .header {
+    height: 88px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e2dc;
+  }
+
+  .logo {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+  }
+
+  .logo span {
+    margin-left: 3px;
+    font-size: 9px;
+    vertical-align: top;
+    color: #8061c8;
+  }
+
+  nav {
+    display: flex;
+    gap: 32px;
+  }
+
+  nav a {
+    font-size: 10px;
+    letter-spacing: 1.3px;
+    color: #77736e;
+  }
+
+  nav a:hover,
+  nav a.active {
+    color: #8061c8;
+  }
+
+  .hero {
+    padding: 125px 12% 115px;
+  }
+
+  .eyebrow {
+    color: #8061c8;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  h1 {
+    margin: 35px 0 25px;
+    font-family: Georgia, serif;
+    font-size: clamp(48px, 7vw, 86px);
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -3px;
+  }
+
+  h1 em,
+  h2 em {
+    color: #8061c8;
+    font-weight: 400;
+  }
+
+  .intro {
+    max-width: 450px;
+    color: #77736e;
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .inquiries {
+    padding: 75px 12% 110px;
+    background: #efede8;
+  }
+
+  .section-heading {
+    margin-bottom: 45px;
+  }
+
+  h2 {
+    margin-top: 20px;
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 400;
+    letter-spacing: -1.5px;
+  }
+
+  .inquiry {
+    min-height: 120px;
+    display: grid;
+    grid-template-columns: 60px 1fr 30px;
+    align-items: center;
+    border-top: 1px solid #d9d5cd;
+  }
+
+  .inquiry:last-child {
+    border-bottom: 1px solid #d9d5cd;
+  }
+
+  .number {
+    color: #8061c8;
+    font-size: 11px;
+  }
+
+  .inquiry h3 {
+    margin: 0 0 10px;
+    font-family: Georgia, serif;
+    font-size: 23px;
+    font-weight: 400;
+  }
+
+  .inquiry p {
+    margin: 0;
+    color: #77736e;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .arrow {
+    color: #8061c8;
+    font-size: 20px;
+  }
+
+  .note {
+    padding: 120px 12%;
+  }
+
+  .note h2 {
+    font-size: clamp(40px, 6vw, 65px);
+    line-height: 1.2;
+  }
+
+  .note > p:not(.eyebrow) {
+    max-width: 420px;
+    color: #77736e;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .text-link {
+    display: inline-block;
+    margin-top: 30px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #8061c8;
+    color: #8061c8;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  footer {
+    min-height: 110px;
+    padding: 30px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #e5e2dc;
+  }
+
+  footer p,
+  footer > span {
+    color: #88837d;
+    font-size: 11px;
+  }
+
+  @media (max-width: 650px) {
+    .header {
+      height: auto;
+      min-height: 80px;
+      padding: 20px 6%;
+      align-items: flex-start;
+      gap: 20px;
+      flex-direction: column;
+    }
+
+    nav {
+      width: 100%;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    nav a {
+      font-size: 9px;
+    }
+
+    .hero {
+      padding: 90px 7%;
+    }
+
+    .inquiries {
+      padding: 70px 7%;
+    }
+
+    .inquiry {
+      grid-template-columns: 35px 1fr 20px;
+      gap: 8px;
+      padding: 20px 0;
+    }
+
+    .inquiry h3 {
+      font-size: 19px;
+    }
+
+    .inquiry p {
+      font-size: 12px;
+    }
+
+    .note {
+      padding: 85px 7%;
+    }
+
+    footer {
+      padding: 30px 7%;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>

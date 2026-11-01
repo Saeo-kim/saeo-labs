@@ -1,0 +1,386 @@
+
+---
+const stages = [
+  {
+    number: "01",
+    title: "Observe",
+    subtitle: "Find what matters.",
+    description: "We pay attention to everyday problems, changing environments, and questions that deserve a closer look."
+  },
+  {
+    number: "02",
+    title: "Explore",
+    subtitle: "Understand the possibilities.",
+    description: "We investigate unfamiliar fields, connect information, and look for opportunities beyond the obvious."
+  },
+  {
+    number: "03",
+    title: "Experiment",
+    subtitle: "Learn by testing.",
+    description: "We turn assumptions into small experiments. We build prototypes, test ideas, and learn from what happens."
+  },
+  {
+    number: "04",
+    title: "Build",
+    subtitle: "Make ideas tangible.",
+    description: "We develop useful products and services, focusing on real problems and practical value."
+  },
+  {
+    number: "05",
+    title: "Evolve",
+    subtitle: "Keep moving forward.",
+    description: "We listen, measure, improve, and allow each project to grow in a direction shaped by what we learn."
+  }
+];
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Approach — SAEO LABS</title>
+  <meta name="description" content="How SAEO LABS explores ideas, experiments, and builds products." />
+</head>
+<body>
+  <header>
+    <a class="logo" href="/">SAEO LABS<span>®</span></a>
+    <nav>
+      <a href="/about">ABOUT</a>
+      <a href="/ventures">VENTURES</a>
+      <a class="active" href="/approach">APPROACH</a>
+      <a href="/#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">SAEO LABS / OUR APPROACH</p>
+      <h1>We learn by<br />moving forward<span>.</span></h1>
+      <p class="intro">
+        We don't expect every idea to begin with a perfect plan.
+        We believe clarity comes through exploration, experimentation,
+        and the process of making things real.
+      </p>
+      <div class="hero-note">
+        A FLEXIBLE PROCESS FOR AN EVER-CHANGING WORLD.
+      </div>
+    </section>
+
+    <section class="statement">
+      <div class="section-label">01 / THE PRINCIPLE</div>
+      <div>
+        <h2>Start with a question.<br />Discover the next step.</h2>
+        <p>
+          Not everything needs to be figured out before we begin.
+          Sometimes the best way to understand a problem is to work
+          on it, test an idea, and see what becomes possible.
+        </p>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="section-label">02 / THE PROCESS</div>
+      <div class="process-list">
+        {stages.map((stage) => (
+          <article class="stage">
+            <span class="number">{stage.number}</span>
+            <div class="stage-content">
+              <p class="subtitle">{stage.subtitle}</p>
+              <h3>{stage.title}</h3>
+              <p class="description">{stage.description}</p>
+            </div>
+            <span class="arrow">↗</span>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="experiment">
+      <p class="eyebrow">03 / CONTINUOUS DISCOVERY</p>
+      <h2>Progress doesn't<br />always move in a straight line<span>.</span></h2>
+      <p>
+        Some ideas become products. Some experiments lead to entirely
+        different questions. Some directions change along the way.
+        We see these outcomes as part of the process, not as interruptions.
+      </p>
+      <div class="keywords">
+        <span>QUESTION</span>
+        <span>DISCOVER</span>
+        <span>TEST</span>
+        <span>LEARN</span>
+        <span>REPEAT</span>
+      </div>
+    </section>
+
+    <section class="closing">
+      <h2>Make room<br />for what matters<span>.</span></h2>
+      <a href="/ventures">EXPLORE OUR VENTURES ↗</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>SAEO LABS © 2026</span>
+    <a href="/">BACK TO HOME ↑</a>
+  </footer>
+</body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: #f7f6f2;
+    color: #25242a;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  header {
+    height: 82px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e6e3dc;
+  }
+
+  .logo {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #25242a;
+    text-decoration: none;
+  }
+
+  .logo span {
+    color: #8061c8;
+    font-size: 10px;
+    vertical-align: top;
+    margin-left: 3px;
+  }
+
+  nav {
+    display: flex;
+    gap: 30px;
+  }
+
+  nav a, footer a {
+    color: #77747c;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+  }
+
+  nav a.active, nav a:hover {
+    color: #8061c8;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 7%;
+  }
+
+  .hero {
+    padding: 120px 0 100px;
+    border-bottom: 1px solid #e6e3dc;
+  }
+
+  .eyebrow, .section-label {
+    color: #8061c8;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  h1, h2, h3 {
+    font-family: Georgia, serif;
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: clamp(52px, 8vw, 94px);
+    line-height: 1.05;
+    letter-spacing: -4px;
+    margin: 35px 0;
+  }
+
+  h1 span, h2 span {
+    color: #8061c8;
+  }
+
+  .intro {
+    max-width: 540px;
+    color: #77747c;
+    font-size: 16px;
+    line-height: 1.9;
+  }
+
+  .hero-note {
+    margin-top: 65px;
+    color: #aaa5ae;
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .statement, .process {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+    padding: 95px 0;
+    border-bottom: 1px solid #e6e3dc;
+  }
+
+  .section-label {
+    padding-top: 10px;
+  }
+
+  .statement h2, .experiment h2, .closing h2 {
+    font-size: clamp(38px, 5vw, 62px);
+    letter-spacing: -2px;
+    line-height: 1.16;
+    margin: 0 0 30px;
+  }
+
+  .statement p:not(.section-label), .experiment p:not(.eyebrow) {
+    max-width: 570px;
+    color: #77747c;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .process-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stage {
+    display: grid;
+    grid-template-columns: 55px 1fr 30px;
+    gap: 20px;
+    padding: 30px 0;
+    border-top: 1px solid #e6e3dc;
+    align-items: start;
+  }
+
+  .number {
+    color: #8061c8;
+    font-size: 12px;
+    padding-top: 8px;
+  }
+
+  .subtitle {
+    color: #aaa5ae;
+    font-size: 11px;
+    margin: 0 0 10px;
+  }
+
+  .stage h3 {
+    font-size: 32px;
+    margin: 0 0 10px;
+  }
+
+  .description {
+    color: #77747c;
+    font-size: 13px;
+    line-height: 1.8;
+    max-width: 570px;
+  }
+
+  .arrow {
+    color: #8061c8;
+    font-size: 20px;
+  }
+
+  .experiment {
+    padding: 110px 0;
+    border-bottom: 1px solid #e6e3dc;
+  }
+
+  .experiment h2 {
+    margin: 30px 0;
+  }
+
+  .keywords {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 55px;
+  }
+
+  .keywords span {
+    border: 1px solid #ded9e6;
+    border-radius: 30px;
+    padding: 11px 17px;
+    color: #8061c8;
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .closing {
+    padding: 100px 0;
+  }
+
+  .closing a {
+    color: #8061c8;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+  }
+
+  footer {
+    border-top: 1px solid #e6e3dc;
+    padding: 30px 7%;
+    display: flex;
+    justify-content: space-between;
+    color: #aaa5ae;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 700px) {
+    header {
+      height: auto;
+      min-height: 75px;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      padding: 18px 6%;
+    }
+
+    nav {
+      gap: 17px;
+      flex-wrap: wrap;
+    }
+
+    main {
+      padding: 0 6%;
+    }
+
+    .hero {
+      padding: 80px 0;
+    }
+
+    h1 {
+      letter-spacing: -2px;
+    }
+
+    .statement, .process {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding: 65px 0;
+    }
+
+    .stage {
+      grid-template-columns: 35px 1fr 20px;
+      gap: 12px;
+    }
+
+    .experiment {
+      padding: 75px 0;
+    }
+  }
+</style>

@@ -1,5 +1,8 @@
 
 ---
+
+import Header from "../components/Header.astro";
+
 const ventures = [
   {
     number: "01",
@@ -38,18 +41,8 @@ const ventures = [
   </head>
 
   <body>
-    <header class="header">
-      <a class="logo" href="/">SAEO LABS<span>®</span></a>
-
-      <nav>
-        <a href="#about">ABOUT</a>
-        <a href="#ventures">VENTURES</a>
-        <a href="#approach">APPROACH</a>
-        <a href="#contact">CONTACT</a>
-      </nav>
-
-      <a class="header-link" href="#ventures">EXPLORE ↗</a>
-    </header>
+    
+      <Header />
 
     <main>
       <section class="hero">

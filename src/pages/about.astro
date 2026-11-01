@@ -1,0 +1,270 @@
+
+---
+
+import Header from "../components/Header.astro";
+
+const principles = [
+  {
+    number: "01",
+    title: "Explore",
+    description: "We begin with questions. We observe, investigate, and look beyond what is already known."
+  },
+  {
+    number: "02",
+    title: "Experiment",
+    description: "Ideas become experiments. We test possibilities, learn from results, and discover new directions."
+  },
+  {
+    number: "03",
+    title: "Build",
+    description: "We turn what we learn into products, services, and experiences that create real value."
+  }
+];
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — SAEO LABS</title>
+</head>
+<body>
+
+
+<Header active="about" />
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">ABOUT SAEO LABS — 001</p>
+      <h1>Curiosity is<br />where everything begins<span>.</span></h1>
+      <p class="intro">
+        SAEO LABS is an independent venture studio exploring ideas,
+        building products, and discovering new possibilities.
+      </p>
+      <div class="hero-note">INDEPENDENT THINKING. CONTINUOUS BUILDING.</div>
+    </section>
+
+    <section class="manifesto">
+      <div class="section-label">01 / OUR PERSPECTIVE</div>
+      <div>
+        <h2>We don't believe<br />in standing still.</h2>
+        <p>
+          The world is constantly changing. New technologies create new
+          possibilities, and new questions lead us in unexpected directions.
+        </p>
+        <p>
+          We explore different fields, connect ideas, and turn what we
+          discover into something tangible.
+        </p>
+        <p>
+          SAEO LABS is a place to start, experiment, learn, and build.
+          Our direction is not fixed. It grows through what we create.
+        </p>
+      </div>
+    </section>
+
+    <section class="principles">
+      <div class="section-label">02 / HOW WE MOVE</div>
+      <div class="principle-list">
+        {principles.map((item) => (
+          <article class="principle">
+            <span class="number">{item.number}</span>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="closing">
+      <p class="eyebrow">SAEO LABS</p>
+      <h2>Ideas are only<br />the beginning<span>.</span></h2>
+      <a href="/#ventures">EXPLORE OUR VENTURES ↗</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>SAEO LABS © 2026</span>
+    <a href="/">BACK TO HOME ↑</a>
+  </footer>
+</body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: #f7f6f2;
+    color: #25242a;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 7%;
+  }
+
+  .hero {
+    padding: 125px 0 110px;
+    border-bottom: 1px solid #e6e3dc;
+  }
+
+  .eyebrow, .section-label {
+    color: #8061c8;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(48px, 8vw, 94px);
+    font-weight: 400;
+    letter-spacing: -5px;
+    line-height: 1.04;
+    margin: 35px 0;
+  }
+
+  h1 span, .closing h2 span {
+    color: #8061c8;
+  }
+
+  .intro {
+    max-width: 510px;
+    color: #77747c;
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .hero-note {
+    margin-top: 65px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #aaa5ae;
+  }
+
+  .manifesto, .principles {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+    padding: 95px 0;
+    border-bottom: 1px solid #e6e3dc;
+  }
+
+  .section-label {
+    padding-top: 12px;
+  }
+
+  h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 400;
+    letter-spacing: -2px;
+    line-height: 1.15;
+    margin: 0 0 30px;
+  }
+
+  .manifesto p, .principle p {
+    max-width: 570px;
+    color: #77747c;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .principle-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+
+  .principle {
+    border-top: 1px solid #cfc9d8;
+    padding-top: 20px;
+  }
+
+  .number {
+    color: #8061c8;
+    font-size: 11px;
+  }
+
+  .principle h3 {
+    font-family: Georgia, serif;
+    font-size: 27px;
+    font-weight: 400;
+    margin: 30px 0 15px;
+  }
+
+  .closing {
+    padding: 110px 0;
+  }
+
+  .closing h2 {
+    font-size: clamp(48px, 7vw, 78px);
+    margin: 25px 0 35px;
+  }
+
+  .closing a {
+    color: #8061c8;
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  footer {
+    border-top: 1px solid #e6e3dc;
+    padding: 30px 7%;
+    display: flex;
+    justify-content: space-between;
+    color: #aaa5ae;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 700px) {
+    header {
+      height: auto;
+      min-height: 75px;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      padding: 18px 6%;
+    }
+
+    nav {
+      gap: 17px;
+      flex-wrap: wrap;
+    }
+
+    main {
+      padding: 0 6%;
+    }
+
+    .hero {
+      padding: 85px 0;
+    }
+
+    h1 {
+      letter-spacing: -2px;
+    }
+
+    .manifesto, .principles {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding: 65px 0;
+    }
+
+    .principle-list {
+      grid-template-columns: 1fr;
+      gap: 35px;
+    }
+
+    .closing {
+      padding: 75px 0;
+    }
+  }
+</style>
