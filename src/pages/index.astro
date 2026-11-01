@@ -1,11 +1,529 @@
----
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+const ventures = [
+  {
+    number: "01",
+    name: "Lingua Space",
+    category: "LANGUAGE & LEARNING",
+    description: "A space to collect words, explore languages, and discover new ways to learn.",
+    status: "IN DEVELOPMENT",
+    href: "https://liguaspace.onrender.com/",
+  },
+  {
+    number: "02",
+    name: "FocusFlow",
+    category: "PRODUCTIVITY & WORKFLOW",
+    description: "A workspace designed to make projects, tasks, and progress easier to understand.",
+    status: "IN DEVELOPMENT",
+    href: "#",
+  },
+  {
+    number: "03",
+    name: "Future Ventures",
+    category: "RESEARCH & EXPERIMENTS",
+    description: "Exploring new interests, researching opportunities, and turning ideas into products.",
+    status: "EXPLORING",
+    href: "#",
+  },
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SAEO LABS — Exploring ideas, building products, creating opportunities." />
+    <meta name="theme-color" content="#f7f7f5" />
+    <title>SAEO LABS — Ideas into reality</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <a class="logo" href="/">SAEO LABS<span>®</span></a>
+
+      <nav>
+        <a href="#about">ABOUT</a>
+        <a href="#ventures">VENTURES</a>
+        <a href="#approach">APPROACH</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+
+      <a class="header-link" href="#ventures">EXPLORE ↗</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          INDEPENDENT VENTURES & DIGITAL PRODUCTS
+        </div>
+
+        <h1>
+          Ideas are<br />
+          only the <span>beginning.</span>
+        </h1>
+
+        <div class="hero-bottom">
+          <p>
+            We explore interests, develop ideas, and build
+            digital products that create new possibilities.
+          </p>
+          <a href="#about" class="text-link">DISCOVER SAEO LABS ↘</a>
+        </div>
+
+        <div class="hero-index">EST. 2026 · INDEPENDENTLY BUILT</div>
+      </section>
+
+      <section class="intro" id="about">
+        <div class="section-label">01 / ABOUT</div>
+        <div class="intro-content">
+          <p class="small-heading">A SPACE FOR WHAT'S NEXT.</p>
+          <h2>
+            Curiosity leads to ideas.<br />
+            Ideas lead to <span>possibilities.</span>
+          </h2>
+          <p class="body-copy">
+            SAEO LABS is an independent venture brand exploring
+            different fields of interest and developing them
+            into meaningful projects, products, and opportunities.
+          </p>
+        </div>
+      </section>
+
+      <section class="ventures" id="ventures">
+        <div class="section-top">
+          <div>
+            <div class="section-label">02 / VENTURES</div>
+            <h2>What we're building<span>.</span></h2>
+          </div>
+          <p>Ideas in progress.<br />Products taking shape.</p>
+        </div>
+
+        <div class="venture-list">
+          {ventures.map((venture) => (
+            <article class="venture-card">
+              <span class="venture-number">{venture.number}</span>
+              <div class="venture-info">
+                <span class="category">{venture.category}</span>
+                <h3>{venture.name}</h3>
+                <p>{venture.description}</p>
+              </div>
+              <div class="venture-action">
+                <span class="status">{venture.status}</span>
+                <a href={venture.href} aria-label={`Explore ${venture.name}`}>↗</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="approach" id="approach">
+        <div class="section-label">03 / OUR APPROACH</div>
+        <h2>Explore. Experiment. <span>Build.</span></h2>
+        <div class="steps">
+          <div><span>01</span><h3>Explore</h3><p>Discover interests and identify opportunities.</p></div>
+          <div><span>02</span><h3>Experiment</h3><p>Research ideas and test possibilities.</p></div>
+          <div><span>03</span><h3>Build</h3><p>Turn promising ideas into real products.</p></div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="section-label">04 / CONTACT</div>
+        <h2>Have an idea?<br /><span>Let's explore it.</span></h2>
+        <p>New ideas begin with a conversation.</p>
+        <a href="mailto:hello@saeolabs.com" class="contact-link">
+          GET IN TOUCH ↗
+        </a>
+        <small>Note: Contact email to be configured.</small>
+      </section>
+    </main>
+
+    <footer>
+      <a class="logo" href="/">SAEO LABS<span>®</span></a>
+      <p>INDEPENDENT IDEAS. DIGITAL POSSIBILITIES.</p>
+      <span>© 2026 SAEO LABS</span>
+    </footer>
+  </body>
+</html>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: #f7f7f5;
+    color: #171717;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  :global(a) {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .header {
+    height: 82px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e8e8e5;
+    position: sticky;
+    top: 0;
+    background: rgba(247,247,245,.94);
+    backdrop-filter: blur(12px);
+    z-index: 10;
+  }
+
+  .logo {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+
+  .logo span {
+    font-size: 9px;
+    vertical-align: top;
+    margin-left: 3px;
+  }
+
+  nav {
+    display: flex;
+    gap: 32px;
+  }
+
+  nav a, .header-link, .section-label, .eyebrow,
+  .hero-index, .category, .status, .venture-number,
+  footer p, footer > span {
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+  }
+
+  nav a {
+    color: #666;
+  }
+
+  nav a:hover, .header-link:hover {
+    color: #9b7bce;
+  }
+
+  .header-link {
+    border: 1px solid #d8d8d3;
+    padding: 12px 17px;
+    border-radius: 3px;
+  }
+
+  .hero {
+    min-height: 660px;
+    padding: 150px 12% 65px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid #e8e8e5;
+    position: relative;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #777;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #a58acb;
+  }
+
+  h1, h2, h3, p {
+    margin-top: 0;
+  }
+
+  .hero h1 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(60px, 9vw, 116px);
+    line-height: 1.05;
+    letter-spacing: -7px;
+    margin: 35px 0;
+    font-weight: 600;
+  }
+
+  .hero h1 span, h2 span {
+    color: #9b7bce;
+  }
+
+  .hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    max-width: 850px;
+  }
+
+  .hero-bottom p, .body-copy {
+    color: #777;
+    line-height: 1.9;
+    font-size: 14px;
+    max-width: 390px;
+  }
+
+  .text-link {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 8px;
+  }
+
+  .hero-index {
+    position: absolute;
+    right: 7%;
+    bottom: 30px;
+    color: #aaa;
+  }
+
+  .intro, .ventures, .approach, .contact {
+    padding: 115px 12%;
+    border-bottom: 1px solid #e8e8e5;
+  }
+
+  .section-label {
+    color: #999;
+  }
+
+  .intro-content {
+    margin: 65px 0 0 20%;
+  }
+
+  .small-heading {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #9b7bce;
+    font-weight: 700;
+  }
+
+  .intro h2, .section-top h2, .approach h2, .contact h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(34px, 5vw, 58px);
+    letter-spacing: -2.5px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .body-copy {
+    margin-top: 28px;
+  }
+
+  .section-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 55px;
+  }
+
+  .section-top h2 {
+    margin: 24px 0 0;
+  }
+
+  .section-top > p {
+    color: #888;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .venture-card {
+    padding: 32px 0;
+    border-top: 1px solid #deded9;
+    display: grid;
+    grid-template-columns: 60px 1fr 180px;
+    gap: 25px;
+    align-items: center;
+  }
+
+  .venture-number, .category {
+    color: #999;
+  }
+
+  .category {
+    font-size: 9px;
+  }
+
+  .venture-info h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 27px;
+    margin: 10px 0;
+    letter-spacing: -1px;
+  }
+
+  .venture-info p {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.7;
+    max-width: 470px;
+    margin-bottom: 0;
+  }
+
+  .venture-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .status {
+    color: #9b7bce;
+    font-size: 9px;
+  }
+
+  .venture-action a {
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+  }
+
+  .approach {
+    background: #efeee9;
+  }
+
+  .approach h2 {
+    margin: 55px 0;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .steps > div {
+    border-top: 1px solid #d5d3cd;
+    padding-top: 20px;
+  }
+
+  .steps span {
+    color: #9b7bce;
+    font-size: 11px;
+  }
+
+  .steps h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 22px;
+    margin: 25px 0 12px;
+  }
+
+  .steps p, .contact > p {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.8;
+  }
+
+  .contact h2 {
+    margin: 55px 0 20px;
+  }
+
+  .contact-link {
+    display: inline-block;
+    margin-top: 25px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 10px;
+  }
+
+  .contact small {
+    display: block;
+    margin-top: 14px;
+    color: #aaa;
+    font-size: 10px;
+  }
+
+  footer {
+    min-height: 110px;
+    padding: 30px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer p, footer > span {
+    color: #999;
+    font-size: 9px;
+  }
+
+  @media (max-width: 700px) {
+    .header {
+      padding: 0 5%;
+      height: 70px;
+    }
+
+    nav {
+      gap: 12px;
+    }
+
+    nav a {
+      font-size: 8px;
+    }
+
+    .header-link {
+      display: none;
+    }
+
+    .hero {
+      min-height: 570px;
+      padding: 100px 7% 70px;
+    }
+
+    .hero h1 {
+      font-size: clamp(53px, 12vw, 78px);
+      letter-spacing: -4px;
+    }
+
+    .hero-bottom, .section-top {
+      align-items: start;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .intro, .ventures, .approach, .contact {
+      padding: 85px 7%;
+    }
+
+    .intro-content {
+      margin: 55px 0 0;
+    }
+
+    .venture-card {
+      grid-template-columns: 30px 1fr;
+      gap: 15px;
+    }
+
+    .venture-action {
+      grid-column: 2;
+    }
+
+    .steps {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    footer {
+      padding: 28px 5%;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+  }
+</style>
