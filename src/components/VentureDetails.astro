@@ -1,0 +1,100 @@
+---
+import { phaseOf } from "../data/approach";
+import type { Venture } from "../data/ventures";
+
+interface Props {
+  venture: Venture;
+}
+
+const { venture } = Astro.props;
+const phase = phaseOf(venture);
+const [primaryArea, ...relatedAreas] = venture.businessAreas;
+---
+
+<details class="details">
+  <summary>PROJECT DETAILS</summary>
+  <dl>
+    <div>
+      <dt>Business area</dt>
+      <dd>{primaryArea}{relatedAreas.length > 0 && <span class="related"> · also {relatedAreas.join(", ")}</span>}</dd>
+    </div>
+    <div>
+      <dt>Status</dt>
+      <dd>{venture.status}</dd>
+    </div>
+    <div>
+      <dt>Cycle phase</dt>
+      <dd><a href={`/approach#${phase.id}`}>{phase.name}</a></dd>
+    </div>
+    <div>
+      <dt>Image</dt>
+      <dd>{venture.preview ? "Real product screen" : "Concept illustration"}</dd>
+    </div>
+    <div>
+      <dt>Public URL</dt>
+      <dd>
+        {venture.link
+          ? <a href={venture.link} target="_blank" rel="noopener noreferrer">{new URL(venture.link).host}</a>
+          : "Not available yet"}
+      </dd>
+    </div>
+    <div>
+      <dt>Today</dt>
+      <dd>{venture.currentState}</dd>
+    </div>
+  </dl>
+</details>
+
+<style>
+  .details {
+    margin-top: 16px;
+    border-top: 1px solid #dcd8d0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  summary {
+    padding: 12px 0;
+    color: #6a4eb3;
+    cursor: pointer;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+  }
+
+  summary:focus-visible {
+    outline: 2px solid #8061c8;
+    outline-offset: 2px;
+  }
+
+  dl {
+    margin: 0;
+    padding-bottom: 6px;
+  }
+
+  dl div {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 10px;
+    padding: 6px 0;
+  }
+
+  dt {
+    color: #8b8791;
+    font-size: 11px;
+  }
+
+  dd {
+    margin: 0;
+    color: #4e4b53;
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  .related {
+    color: #77747c;
+  }
+
+  a {
+    color: #6a4eb3;
+  }
+</style>

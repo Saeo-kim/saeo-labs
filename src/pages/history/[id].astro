@@ -1,0 +1,191 @@
+---
+import { getCollection, render } from "astro:content";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+
+export async function getStaticPaths() {
+  const published = await getCollection("history", (entry) => entry.data.status === "Published");
+  return published.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const date = new Intl.DateTimeFormat("en-US", { dateStyle: "long", timeZone: "UTC" }).format(entry.data.date);
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{entry.data.title} — SAEO LABS History</title>
+  <meta name="description" content={entry.data.summary} />
+</head>
+<body>
+  <Header active="history" />
+
+  <main>
+    <p class="section-flag"><a href="/history">← History</a><span>{entry.data.category}</span></p>
+
+    <article>
+      <header class="head">
+        <h1>{entry.data.title}</h1>
+        <p class="deck">{entry.data.summary}</p>
+        <p class="byline">By SAEO LABS · <time datetime={entry.data.date?.toISOString().slice(0, 10)}>{date}</time></p>
+      </header>
+
+      <div class="body">
+        <Content />
+      </div>
+    </article>
+
+    <nav class="next" aria-label="Continue exploring">
+      <a href="/about#philosophy"><span>About</span>Our philosophy</a>
+      <a href="/about#solo-operation"><span>About</span>Solo operation</a>
+      <a href="/approach"><span>Approach</span>The operating cycle</a>
+    </nav>
+  </main>
+
+  <Footer />
+</body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: #f3efe5;
+    color: #25242a;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  main {
+    max-width: 800px;
+    margin: auto;
+    padding: 0 24px 90px;
+  }
+
+  .section-flag {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 34px 0 11px;
+    border-bottom: 3px double #25242a;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    letter-spacing: .6px;
+  }
+
+  .section-flag a {
+    display: inline-block;
+    margin: -8px 0;
+    padding: 8px 0;
+    color: #6a4eb3;
+    text-decoration: none;
+  }
+
+  .section-flag span {
+    color: #6f6b73;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+  }
+
+  .head {
+    padding: 56px 0 28px;
+  }
+
+  h1 {
+    margin: 0 0 22px;
+    font-size: clamp(38px, 10vw, 92px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -.03em;
+  }
+
+  .deck {
+    margin: 0 0 22px;
+    color: #3f3c44;
+    font-size: clamp(19px, 2.6vw, 24px);
+    line-height: 1.4;
+  }
+
+  .byline {
+    margin: 0;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #cdc7b8;
+    color: #6f6b73;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    letter-spacing: .4px;
+  }
+
+  .body :global(p) {
+    margin: 0 0 22px;
+    font-size: 19px;
+    line-height: 1.7;
+  }
+
+  .body > :global(p:first-child::first-letter) {
+    float: left;
+    margin: 7px 10px 0 0;
+    color: #6a4eb3;
+    font-size: 76px;
+    line-height: .8;
+  }
+
+  .body :global(h2) {
+    margin: 46px 0 16px;
+    font-size: clamp(26px, 4vw, 34px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -.5px;
+  }
+
+  .body :global(a) {
+    color: #6a4eb3;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
+
+  .next {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 56px;
+    padding-top: 16px;
+    border-top: 3px double #25242a;
+  }
+
+  .next a {
+    color: #25242a;
+    font-size: 18px;
+    line-height: 1.3;
+    text-decoration: none;
+  }
+
+  .next a:hover {
+    color: #6a4eb3;
+  }
+
+  .next span {
+    display: block;
+    margin-bottom: 4px;
+    color: #6f6b73;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 620px) {
+    .next {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .body :global(p) {
+      font-size: 18px;
+    }
+  }
+</style>
