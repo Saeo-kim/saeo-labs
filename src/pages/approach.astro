@@ -1,22 +1,37 @@
 
 ---
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
-import { cycle, venturesInPhase } from "../data/approach";
-import { ventureSlug } from "../data/ventures";
-
-const center = 200;
-const radius = 138;
-const pointAt = (degrees: number) => ({
-  x: center + radius * Math.cos((degrees * Math.PI) / 180),
-  y: center + radius * Math.sin((degrees * Math.PI) / 180),
-});
-const stepDegrees = 360 / cycle.length;
-const ringNodes = cycle.map((phase, index) => ({ phase, ...pointAt(-90 + index * stepDegrees) }));
-const ringArrows = cycle.map((_, index) => {
-  const degrees = -90 + stepDegrees / 2 + index * stepDegrees;
-  return { ...pointAt(degrees), rotate: degrees + 90 };
-});
+const stages = [
+  {
+    number: "01",
+    title: "Observe",
+    subtitle: "Find what matters.",
+    description: "We pay attention to everyday problems, changing environments, and questions that deserve a closer look."
+  },
+  {
+    number: "02",
+    title: "Explore",
+    subtitle: "Understand the possibilities.",
+    description: "We investigate unfamiliar fields, connect information, and look for opportunities beyond the obvious."
+  },
+  {
+    number: "03",
+    title: "Experiment",
+    subtitle: "Learn by testing.",
+    description: "We turn assumptions into small experiments. We build prototypes, test ideas, and learn from what happens."
+  },
+  {
+    number: "04",
+    title: "Build",
+    subtitle: "Make ideas tangible.",
+    description: "We develop useful products and services, focusing on real problems and practical value."
+  },
+  {
+    number: "05",
+    title: "Evolve",
+    subtitle: "Keep moving forward.",
+    description: "We listen, measure, improve, and allow each project to grow in a direction shaped by what we learn."
+  }
+];
 ---
 
 <html lang="en">
@@ -27,7 +42,15 @@ const ringArrows = cycle.map((_, index) => {
   <meta name="description" content="How SAEO LABS explores ideas, experiments, and builds products." />
 </head>
 <body>
-  <Header active="approach" />
+  <header>
+    <a class="logo" href="/">SAEO LABS<span>®</span></a>
+    <nav>
+      <a href="/about">ABOUT</a>
+      <a href="/ventures">VENTURES</a>
+      <a class="active" href="/approach">APPROACH</a>
+      <a href="/#contact">CONTACT</a>
+    </nav>
+  </header>
 
   <main>
     <section class="hero">
@@ -52,73 +75,23 @@ const ringArrows = cycle.map((_, index) => {
           Sometimes the best way to understand a problem is to work
           on it, test an idea, and see what becomes possible.
         </p>
-        <p>
-          Independent, not isolated: each phase is ours to decide and answer
-          for, and each one depends on users, markets, tools, and specialists
-          outside the studio. Explore and Experiment happen in Research and
-          Validate. Build and Operate keep their names.
-        </p>
       </div>
     </section>
 
     <section class="process">
-      <div class="process-side">
-        <div class="section-label">02 / THE OPERATING CYCLE</div>
-        <svg class="ring" viewBox="0 30 400 340" role="img" aria-label="A closed loop: Research, Build, Validate, Operate, Monetize, then back to Research.">
-          <circle cx={center} cy={center} r={radius} fill="none" stroke="#cfc9d8" stroke-width="1.5" />
-          {ringArrows.map((arrow) => (
-            <path d="M-5 -7 L5 0 L-5 7" fill="none" stroke="#8061c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform={`translate(${arrow.x.toFixed(1)} ${arrow.y.toFixed(1)}) rotate(${arrow.rotate})`} />
-          ))}
-          {ringNodes.map((node) => (
-            <a href={`#${node.phase.id}`}>
-              <rect x={(node.x - 58).toFixed(1)} y={(node.y - 18).toFixed(1)} width="116" height="36" rx="18" fill="#f7f6f2" stroke="#8061c8" stroke-width="1.5" />
-              <text x={node.x.toFixed(1)} y={(node.y + 4.5).toFixed(1)} text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1" fill="#25242a">{node.phase.name}</text>
-            </a>
-          ))}
-          <text x={center} y={center - 4} text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#25242a">One cycle,</text>
-          <text x={center} y={center + 24} text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#25242a">repeated.</text>
-        </svg>
-      </div>
-
+      <div class="section-label">02 / THE PROCESS</div>
       <div class="process-list">
-        {cycle.map((phase, index) => {
-          const projects = venturesInPhase(phase);
-          const next = cycle[(index + 1) % cycle.length];
-          return (
-            <article class="stage" id={phase.id}>
-              <span class="number">{String(index + 1).padStart(2, "0")}</span>
-              <div class="stage-content">
-                <p class="subtitle">{phase.purpose}</p>
-                <h3>{phase.name}</h3>
-                <p class="description">{phase.summary}</p>
-                <ul class="tasks">
-                  {phase.tasks.map((task) => <li>{task}</li>)}
-                </ul>
-                <dl class="stage-facts">
-                  <div>
-                    <dt>Done when</dt>
-                    <dd>{phase.doneWhen}</dd>
-                  </div>
-                  <div>
-                    <dt>Hands to {next.name}</dt>
-                    <dd>{phase.handsOff}</dd>
-                  </div>
-                  <div>
-                    <dt>Projects here now</dt>
-                    <dd>
-                      {projects.length > 0
-                        ? projects.map((venture, position) => (
-                            <>{position > 0 && ", "}<a href={`/ventures#${ventureSlug(venture)}`}>{venture.name}</a></>
-                          ))
-                        : "None yet."}
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-              <span class="arrow" aria-hidden="true">{index === cycle.length - 1 ? "↺" : "↓"}</span>
-            </article>
-          );
-        })}
+        {stages.map((stage) => (
+          <article class="stage">
+            <span class="number">{stage.number}</span>
+            <div class="stage-content">
+              <p class="subtitle">{stage.subtitle}</p>
+              <h3>{stage.title}</h3>
+              <p class="description">{stage.description}</p>
+            </div>
+            <span class="arrow">↗</span>
+          </article>
+        ))}
       </div>
     </section>
 
@@ -145,7 +118,10 @@ const ringArrows = cycle.map((_, index) => {
     </section>
   </main>
 
-  <Footer />
+  <footer>
+    <span>SAEO LABS © 2026</span>
+    <a href="/">BACK TO HOME ↑</a>
+  </footer>
 </body>
 </html>
 
@@ -159,6 +135,46 @@ const ringArrows = cycle.map((_, index) => {
     background: #f7f6f2;
     color: #25242a;
     font-family: Arial, Helvetica, sans-serif;
+  }
+
+  header {
+    height: 82px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e6e3dc;
+  }
+
+  .logo {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #25242a;
+    text-decoration: none;
+  }
+
+  .logo span {
+    color: #8061c8;
+    font-size: 10px;
+    vertical-align: top;
+    margin-left: 3px;
+  }
+
+  nav {
+    display: flex;
+    gap: 30px;
+  }
+
+  nav a, footer a {
+    color: #77747c;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+  }
+
+  nav a.active, nav a:hover {
+    color: #8061c8;
   }
 
   main {
@@ -278,78 +294,6 @@ const ringArrows = cycle.map((_, index) => {
     font-size: 20px;
   }
 
-  .process-side {
-    align-self: start;
-    position: sticky;
-    top: 112px;
-  }
-
-  .ring {
-    display: block;
-    width: 100%;
-    max-width: 400px;
-    margin-top: 32px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .ring a:hover rect, .ring a:focus-visible rect {
-    fill: #e8e1f4;
-  }
-
-  .stage {
-    scroll-margin-top: 112px;
-  }
-
-  .stage h3 {
-    letter-spacing: 1px;
-  }
-
-  .tasks {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin: 20px 0 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .tasks li {
-    padding: 6px 10px;
-    border: 1px solid #ded9e6;
-    border-radius: 3px;
-    color: #5f5b66;
-    font-size: 11px;
-  }
-
-  .stage-facts {
-    margin: 22px 0 0;
-  }
-
-  .stage-facts div {
-    display: grid;
-    grid-template-columns: 130px minmax(0, 1fr);
-    gap: 14px;
-    padding: 10px 0;
-    border-top: 1px solid #efece4;
-  }
-
-  .stage-facts dt {
-    color: #8b8791;
-    font-size: 11px;
-    line-height: 1.7;
-  }
-
-  .stage-facts dd {
-    margin: 0;
-    color: #4e4b53;
-    font-size: 13px;
-    line-height: 1.7;
-  }
-
-  .stage-facts a {
-    color: #6a4eb3;
-  }
-
   .experiment {
     padding: 110px 0;
     border-bottom: 1px solid #e6e3dc;
@@ -386,7 +330,32 @@ const ringArrows = cycle.map((_, index) => {
     text-decoration: none;
   }
 
+  footer {
+    border-top: 1px solid #e6e3dc;
+    padding: 30px 7%;
+    display: flex;
+    justify-content: space-between;
+    color: #aaa5ae;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
   @media (max-width: 700px) {
+    header {
+      height: auto;
+      min-height: 75px;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      padding: 18px 6%;
+    }
+
+    nav {
+      gap: 17px;
+      flex-wrap: wrap;
+    }
+
     main {
       padding: 0 6%;
     }
@@ -405,28 +374,9 @@ const ringArrows = cycle.map((_, index) => {
       padding: 65px 0;
     }
 
-    .process-side {
-      position: static;
-    }
-
-    .closing a {
-      display: inline-block;
-      padding: 8px 0;
-    }
-
-    .ring {
-      margin-inline: auto;
-    }
-
     .stage {
-      grid-template-columns: 35px minmax(0, 1fr) 20px;
+      grid-template-columns: 35px 1fr 20px;
       gap: 12px;
-      scroll-margin-top: 130px;
-    }
-
-    .stage-facts div {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 2px;
     }
 
     .experiment {

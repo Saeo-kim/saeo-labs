@@ -1,56 +1,27 @@
-
 ---
-
-import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import StatusBadge from "../components/StatusBadge.astro";
-import { courses, courseStatuses } from "../data/academy";
-import {
-  accountabilityRules,
-  aiPrinciples,
-  directions,
-  legal,
-  operatorRemit,
-  tenets,
-  weeklyExample,
-  workAreas,
-  workModes,
-} from "../data/studio";
-import { ventureSlug } from "../data/ventures";
 
-const statusTally = courseStatuses.map((status) => ({
-  status,
-  count: courses.filter((course) => course.status === status).length,
-}));
-
-const jumpLinks = [
-  { label: "PHILOSOPHY", href: "#philosophy" },
-  { label: "DIRECTION", href: "#direction" },
-  { label: "SOLO OPERATION", href: "#solo-operation" },
-  { label: "ACADEMY", href: "#academy" },
-  { label: "LEGAL", href: "#legal" },
-];
-
-const principles = [
+const team = [
   {
     number: "01",
-    title: "Explore",
-    description: "We begin with questions. We observe, investigate, and look beyond what is already known."
+    name: "THE FOUNDER",
+    role: "VISION & DIRECTION",
+    description: "Exploring ideas and shaping the direction of SAEO LABS.",
+    image: "/images/team-founder.jpg"
   },
   {
     number: "02",
-    title: "Experiment",
-    description: "Ideas become experiments. We test possibilities, learn from results, and discover new directions."
+    name: "THE BUILDER",
+    role: "PRODUCT & ENGINEERING",
+    description: "Turning concepts into functional products and systems.",
+    image: "/images/team-builder.jpg"
   },
   {
     number: "03",
-    title: "Build",
-    description: "We turn what we learn into products, services, and experiences that create real value."
-  },
-  {
-    number: "04",
-    title: "Operate",
-    description: "We keep what works running, improve it through use, and look for ways to make it sustainable."
+    name: "THE RESEARCHER",
+    role: "RESEARCH & STRATEGY",
+    description: "Connecting knowledge, discovering opportunities, and testing possibilities.",
+    image: "/images/team-researcher.jpg"
   }
 ];
 ---
@@ -59,264 +30,197 @@ const principles = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover SAEO LABS, an independent venture studio exploring ideas and building possibilities." />
   <title>About — SAEO LABS</title>
-  <meta name="description" content="The philosophy, direction, solo operating model, and learning system behind SAEO LABS, an independent venture studio." />
 </head>
+
 <body>
 
+  <div class="site-frame">
 
-<Header active="about" />
+    <Header active="about" variant="editorial" />
 
-  <main>
-    <section class="hero">
-      <p class="eyebrow">ABOUT SAEO LABS — 001</p>
-      <h1>Curiosity is<br />where everything begins<span>.</span></h1>
-      <p class="intro">
-        SAEO LABS is an independent venture studio exploring ideas,
-        building products, and discovering new possibilities.
-      </p>
-      <div class="hero-note">INDEPENDENT THINKING. CONTINUOUS BUILDING.</div>
-      <nav class="jump" aria-label="On this page">
-        {jumpLinks.map((link) => <a href={link.href}>{link.label}</a>)}
-      </nav>
-    </section>
+    <main>
 
-    <section class="manifesto" id="philosophy">
-      <div class="section-label">01 / PHILOSOPHY</div>
-      <div>
-        <h2>Independent,<br />not isolated<span>.</span></h2>
-        <p>
-          Independence here means being able to define a problem, judge what
-          it needs, choose the right technology and collaborators, and answer
-          for the result. It does not mean doing everything alone.
-        </p>
-        <p>
-          SAEO LABS works in constant contact with knowledge, tools, markets,
-          people, companies, and other industries. New value usually comes from
-          those connections. <a class="inline" href="/history/why-independence">Read why in the journal</a>.
-        </p>
-        <ul class="tenets">
-          {tenets.map((tenet) => (
-            <li><h3>{tenet.title}</h3><p>{tenet.text}</p></li>
-          ))}
-        </ul>
-      </div>
-    </section>
+      <!-- ABOUT HERO -->
 
-    <section class="manifesto">
-      <div class="section-label">02 / OUR PERSPECTIVE</div>
-      <div>
-        <h2>We don't believe<br />in standing still.</h2>
-        <p>
-          The world is constantly changing. New technologies create new
-          possibilities, and new questions lead us in unexpected directions.
-        </p>
-        <p>
-          We explore different fields, connect ideas, and turn what we
-          discover into something tangible.
-        </p>
-        <p>
-          SAEO LABS is a place to start, experiment, learn, and build.
-          Our direction is not fixed. It grows through what we create.
-        </p>
-      </div>
-    </section>
+      <section class="about-hero">
 
-    <section class="principles">
-      <div class="section-label">03 / HOW WE MOVE</div>
-      <div class="principle-list">
-        {principles.map((item) => (
-          <article class="principle">
-            <span class="number">{item.number}</span>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </article>
-        ))}
-      </div>
-    </section>
+        <h1>About</h1>
 
-    <section class="manifesto" id="direction">
-      <div class="section-label">04 / OUR DIRECTION</div>
-      <div>
-        <h2>Where this is heading<span>.</span></h2>
-        <p>The long-term direction, what each part means, and the work it leads to.</p>
-        <ul class="directions">
-          {directions.map((direction) => (
-            <li>
-              <h3>{direction.title}</h3>
-              <p>{direction.meaning}</p>
-              <p class="leads-to"><span>LEADS TO</span>{direction.leadsTo}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+        <div class="intro-grid">
 
-    <section class="manifesto" id="solo-operation">
-      <div class="section-label">05 / SOLO OPERATION</div>
-      <div>
-        <h2>One operator,<br />many disciplines<span>.</span></h2>
-        <p>
-          SAEO LABS is run by one person who carries responsibility across the
-          whole business. This section describes the operating model. Some
-          areas are active now, and others begin as ventures reach them.
-        </p>
+          <!-- SUMMARY / MISSION -->
 
-        <h3 class="sub">What the operator is responsible for</h3>
-        <ul class="chips">
-          {operatorRemit.map((item) => <li>{item}</li>)}
-        </ul>
+          <div class="intro-text">
 
-        <h3 class="sub">Where accountability sits</h3>
-        <ul class="rules">
-          {accountabilityRules.map((rule) => <li>{rule}</li>)}
-        </ul>
+            <article class="text-block" id="summary">
 
-        <h3 class="sub">Four ways work gets done</h3>
-        <ul class="directions">
-          {workModes.map((mode) => (
-            <li>
-              <h3>{mode.name}</h3>
-              <p>{mode.text}</p>
-              <p class="leads-to"><span>USED FOR</span>{mode.appliesTo}</p>
-            </li>
-          ))}
-        </ul>
+              <div class="label">Summary</div>
 
-        <h3 class="sub">Areas of work</h3>
-        <div class="areas">
-          {workAreas.map((area) => (
-            <div class="area">
-              <div>
-                <h4>{area.name}</h4>
-                <p>{area.scope}</p>
-              </div>
-              <ul class="chips chips--small" aria-label={`Ways of working in ${area.name}`}>
-                {area.modes.map((mode) => <li>{mode}</li>)}
-              </ul>
+              <p>
+                SAEO LABS is an independent venture studio exploring ideas,
+                building products, and discovering new possibilities.
+                We connect knowledge, technology, and creativity
+                to turn possibilities into reality.
+              </p>
+
+              <details class="detail">
+                <summary>VIEW DETAILS ↗</summary>
+                <div class="detail-content">
+                  <p>
+                    SAEO LABS began with curiosity about how things work,
+                    how ideas connect, and how technology can create
+                    meaningful opportunities.
+                  </p>
+                  <p>
+                    We explore different fields, experiment with concepts,
+                    and develop independent projects.
+                    Each project is an opportunity to learn,
+                    test an idea, and create something useful.
+                  </p>
+                </div>
+              </details>
+
+            </article>
+
+            <article class="text-block" id="mission">
+
+              <div class="label">Mission</div>
+
+              <p>
+                Our mission is to transform curiosity into creation.
+                We explore, experiment, and build with the belief
+                that every small idea can lead to something greater.
+              </p>
+
+              <details class="detail">
+                <summary>VIEW DETAILS ↗</summary>
+                <div class="detail-content">
+                  <p>
+                    We believe that learning should lead to action.
+                    Knowledge becomes more valuable when it is applied,
+                    tested, and transformed into real experiences.
+                  </p>
+                  <p>
+                    Our goal is to build products and services
+                    that solve problems, connect people,
+                    and create lasting value.
+                  </p>
+                </div>
+              </details>
+
+            </article>
+
+          </div>
+
+          <!-- ARCHITECTURE IMAGE -->
+
+          <div class="architecture">
+
+            <div class="architecture-title">
+              SAEO LABS
             </div>
-          ))}
+
+            <img
+              src="/images/saeo-building.jpg"
+              alt="Modern architectural building representing SAEO LABS"
+            />
+
+            <span class="image-caption">
+              INDEPENDENT THINKING. CONTINUOUS BUILDING.
+            </span>
+
+          </div>
+
         </div>
 
-        <h3 class="sub">AI &amp; automation principles</h3>
-        <ul class="tenets">
-          {aiPrinciples.map((principle) => (
-            <li><h3>{principle.title}</h3><p>{principle.text}</p></li>
-          ))}
-        </ul>
-        <p>Final responsibility for anything AI produces stays with the operator.</p>
+      </section>
 
-        <h3 class="sub">Weekly operations <span class="example-tag">EXAMPLE ONLY</span></h3>
-        <p>An example of how a week can be organized. It is not a record of work performed.</p>
-        <ol class="week">
-          {weeklyExample.map((item) => (
-            <li>
-              <span class="day">{item.day}</span>
-              <span class="focus">{item.focus}</span>
-              <span class="detail">{item.detail}</span>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
 
-    <section class="manifesto" id="academy">
-      <div class="section-label">06 / SAEO LABS ACADEMY</div>
-      <div>
-        <h2>An independent<br />learning system<span>.</span></h2>
-        <p>
-          The Academy is the in-house curriculum for building what it takes to
-          run a business independently. Each course is measured by what it lets
-          the operator do, and is marked only as far as the work has actually gone.
-        </p>
-        <ul class="tally">
-          {statusTally.map((item) => (
-            <li><strong>{item.count}</strong> <StatusBadge status={item.status} /></li>
-          ))}
-        </ul>
+      <!-- OUR TEAM -->
 
-        <div class="courses">
-          {courses.map((course) => (
-            <details class="course">
-              <summary>
-                <span class="number">{course.number}</span>
-                <span class="course-name">
-                  <span class="course-title">{course.title}</span>
-                  <span class="course-ko" lang="ko">{course.titleKo}</span>
+      <section class="team-section">
+
+        <div class="team-heading">
+          <h2>OUR TEAM</h2>
+          <p>
+            A collection of virtual identities representing
+            the different roles and disciplines within SAEO LABS.
+          </p>
+        </div>
+
+        <div class="team-grid">
+
+          {team.map((member) => (
+            <article class="team-member">
+
+              <div class="member-image">
+                <img
+                  src={member.image}
+                  alt={`AI virtual profile representing ${member.role}`}
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="member-info">
+
+                <span class="member-number">
+                  {member.number}
                 </span>
-                <StatusBadge status={course.status} />
-                <span class="toggle" aria-hidden="true"></span>
-              </summary>
-              <dl>
-                <div><dt>Goal</dt><dd>{course.goal}</dd></div>
-                <div>
-                  <dt>Topics</dt>
-                  <dd><ul class="chips chips--small">{course.topics.map((topic) => <li>{topic}</li>)}</ul></dd>
-                </div>
-                <div><dt>Applied to</dt><dd>{course.appliedTo}</dd></div>
-                <div>
-                  <dt>Related projects</dt>
-                  <dd>
-                    {course.relatedProjects.length > 0
-                      ? course.relatedProjects.map((venture, position) => (
-                          <>{position > 0 && ", "}<a class="inline" href={`/ventures#${ventureSlug(venture)}`}>{venture.name}</a></>
-                        ))
-                      : "None linked yet."}
-                  </dd>
-                </div>
-                <div>
-                  <dt>Outcomes</dt>
-                  <dd>
-                    {course.records.length > 0
-                      ? course.records.map((record, position) => (
-                          <>{position > 0 && ", "}<a class="inline" href={record.href} target="_blank" rel="noopener noreferrer">{record.label}</a></>
-                        ))
-                      : "No outcomes recorded yet."}
-                  </dd>
-                </div>
-                <div><dt>Status</dt><dd>{course.status}</dd></div>
-              </dl>
-            </details>
+
+                <h3>{member.name}</h3>
+
+                <span class="member-role">
+                  {member.role}
+                </span>
+
+                <p>{member.description}</p>
+
+              </div>
+
+            </article>
           ))}
+
         </div>
-      </div>
-    </section>
 
-    <section class="manifesto" id="legal">
-      <div class="section-label">07 / LEGAL &amp; BUSINESS INFORMATION</div>
-      <div>
-        <h2>The legal context<span>.</span></h2>
-        <p>Official law and general operating notes are kept apart. Nothing here is legal advice.</p>
-
-        <h3 class="sub">Official source</h3>
-        <p>
-          <a class="inline" href={legal.statute.href} target="_blank" rel="noopener noreferrer" lang="ko">{legal.statute.name}</a>
-          <br /><span class="fine">{legal.statute.version}. Competent authority: {legal.statute.authority}.</span>
-        </p>
-        <p>{legal.definition}</p>
-        <p>{legal.statusNote}</p>
-        <p>
-          Laws change, so the current text is always on the
-          <a class="inline" href={legal.portal.href} target="_blank" rel="noopener noreferrer">{legal.portal.name}</a>.
+        <p class="team-note">
+          * VIRTUAL TEAM — AI-GENERATED REPRESENTATIONS
         </p>
 
-        <h3 class="sub">General operating notes <span class="example-tag">NOT LAW</span></h3>
-        <ul class="rules">
-          {legal.operatingNotes.map((note) => <li>{note}</li>)}
-        </ul>
-      </div>
-    </section>
+      </section>
 
-    <section class="closing">
-      <p class="eyebrow">SAEO LABS</p>
-      <h2>Ideas are only<br />the beginning<span>.</span></h2>
-      <a href="/#ventures">EXPLORE OUR VENTURES ↗</a>
-    </section>
-  </main>
 
-  <Footer />
+      <!-- CLOSING -->
+
+      <section class="closing">
+
+        <p>SAEO LABS</p>
+
+        <h2>
+          Ideas are only<br />
+          the beginning.
+        </h2>
+
+        <a href="/ventures">
+          EXPLORE OUR VENTURES ↗
+        </a>
+
+      </section>
+
+    </main>
+
+
+    <footer>
+      <span>SAEO LABS © 2026</span>
+      <a href="/">BACK TO HOME ↑</a>
+    </footer>
+
+  </div>
+
 </body>
 </html>
+
 
 <style>
   :global(*) {
@@ -325,496 +229,393 @@ const principles = [
 
   :global(body) {
     margin: 0;
-    background: #f7f6f2;
-    color: #25242a;
+    background: #b9b9b9;
+    color: #080808;
     font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .site-frame {
+    width: calc(100% - 10.3%);
+    max-width: 1500px;
+    margin: 60px auto;
+    background: white;
+    min-height: 100vh;
   }
 
   main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 7%;
+    padding: 0 10px;
   }
 
-  .hero {
-    padding: 125px 0 110px;
-    border-bottom: 1px solid #e6e3dc;
+
+  /* ABOUT */
+
+  .about-hero {
+    padding-top: 62px;
   }
 
-  .eyebrow, .section-label {
-    color: #8061c8;
-    font-size: 10px;
-    letter-spacing: 2px;
-    font-weight: 700;
+  .about-hero h1 {
+    font-size: clamp(70px, 8vw, 104px);
+    font-weight: 500;
+    letter-spacing: -6px;
+    line-height: 1;
+    margin: 0 0 20px;
   }
 
-  h1 {
-    font-family: Georgia, serif;
-    font-size: clamp(48px, 8vw, 94px);
-    font-weight: 400;
-    letter-spacing: -5px;
-    line-height: 1.04;
-    margin: 35px 0;
-  }
-
-  h1 span, .closing h2 span {
-    color: #8061c8;
-  }
-
-  .intro {
-    max-width: 510px;
-    color: #77747c;
-    font-size: 17px;
-    line-height: 1.8;
-  }
-
-  .hero-note {
-    margin-top: 65px;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: #aaa5ae;
-  }
-
-  .manifesto, .principles {
+  .intro-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 50px;
-    padding: 95px 0;
-    border-bottom: 1px solid #e6e3dc;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 7%;
+    align-items: start;
   }
 
-  .section-label {
-    padding-top: 12px;
+  .intro-text {
+    padding-top: 25px;
   }
 
-  h2 {
-    font-family: Georgia, serif;
-    font-size: clamp(36px, 5vw, 58px);
-    font-weight: 400;
-    letter-spacing: -2px;
-    line-height: 1.15;
-    margin: 0 0 30px;
+  .text-block {
+    margin-bottom: 26px;
+    max-width: 420px;
   }
 
-  .manifesto p, .principle p {
-    max-width: 570px;
-    color: #77747c;
-    font-size: 14px;
-    line-height: 1.9;
-  }
-
-  .principle-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 45px 25px;
-  }
-
-  .manifesto {
-    scroll-margin-top: 90px;
-  }
-
-  .manifesto h2 span {
-    color: #8061c8;
-  }
-
-  .manifesto > div {
-    min-width: 0;
-  }
-
-  .manifesto ul, .manifesto ol {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .manifesto h3, .manifesto h4 {
-    font-family: Georgia, serif;
-    font-weight: 400;
-  }
-
-  .jump {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 26px;
-    margin-top: 28px;
-  }
-
-  .jump a {
-    padding: 6px 0;
-    border-bottom: 1px solid #cfc9d8;
-    color: #6a4eb3;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-decoration: none;
-  }
-
-  .jump a:hover {
-    color: #25242a;
-  }
-
-  a.inline {
-    color: #6a4eb3;
-    text-underline-offset: 3px;
-  }
-
-  .manifesto .fine {
-    color: #77747c;
-    font-size: 12px;
-  }
-
-  .sub {
-    margin: 56px 0 18px;
-    padding-top: 22px;
-    border-top: 1px solid #e6e3dc;
-    font-size: 26px;
-    line-height: 1.2;
-    letter-spacing: -.6px;
-  }
-
-  .example-tag {
-    display: inline-block;
-    margin-left: 8px;
-    padding: 4px 7px;
-    border-radius: 3px;
-    background: #25242a;
-    color: #f7f6f2;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 8px;
-    letter-spacing: 1.2px;
-    vertical-align: middle;
-  }
-
-  .tenets, .directions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 26px 25px;
-    margin-top: 32px !important;
-  }
-
-  .tenets li, .directions li {
-    padding-top: 16px;
-    border-top: 1px solid #cfc9d8;
-  }
-
-  .tenets h3, .directions h3 {
-    margin: 0 0 8px;
-    font-size: 20px;
-    line-height: 1.25;
-    letter-spacing: -.3px;
-  }
-
-  .tenets p, .directions p, .area p {
-    margin: 0;
-    color: #77747c;
+  .label {
+    color: #888;
+    font-family: "Courier New", monospace;
     font-size: 13px;
-    line-height: 1.75;
+    margin-bottom: 7px;
   }
 
-  .directions p.leads-to {
-    margin-top: 8px;
-    color: #4e4b53;
-  }
-
-  .leads-to span {
-    display: block;
-    margin-bottom: 2px;
-    color: #8061c8;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-  }
-
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .chips li {
-    padding: 8px 12px;
-    border: 1px solid #ded9e6;
-    border-radius: 3px;
-    color: #4e4b53;
-    font-size: 12px;
-  }
-
-  .chips--small {
-    gap: 6px;
-  }
-
-  .chips--small li {
-    padding: 5px 8px;
-    font-size: 11px;
-  }
-
-  .rules li {
-    position: relative;
-    padding: 10px 0 10px 20px;
-    border-bottom: 1px solid #efece4;
-    color: #4e4b53;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .rules li::before {
-    content: "";
-    position: absolute;
-    top: 18px;
-    left: 2px;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #8061c8;
-  }
-
-  .area {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 10px 22px;
-    padding: 16px 0;
-    border-bottom: 1px solid #efece4;
-  }
-
-  .area h4 {
-    margin: 0 0 4px;
-    font-size: 18px;
-  }
-
-  .area .chips {
-    align-content: flex-start;
-  }
-
-  .week li {
-    display: grid;
-    grid-template-columns: 44px minmax(0, 190px) minmax(0, 1fr);
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid #efece4;
+  .text-block > p {
+    font-family: "Courier New", monospace;
     font-size: 13px;
-    line-height: 1.6;
+    line-height: 1.35;
+    margin: 0;
+    color: #111;
   }
 
-  .day {
-    color: #8061c8;
-    font-weight: 700;
-  }
 
-  .focus {
-    color: #25242a;
-  }
+  /* DETAILS */
 
   .detail {
-    color: #77747c;
+    margin-top: 13px;
+    text-align: right;
+    font-family: "Courier New", monospace;
+    font-size: 10px;
   }
 
-  .tally {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 28px;
-    margin: 30px 0 !important;
-  }
-
-  .tally li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .tally strong {
-    font-family: Georgia, serif;
-    font-size: 28px;
-    font-weight: 400;
-  }
-
-  .course {
-    border-top: 1px solid #dcd8d0;
-  }
-
-  .course:last-child {
-    border-bottom: 1px solid #dcd8d0;
-  }
-
-  .course summary {
-    display: grid;
-    grid-template-columns: 34px minmax(0, 1fr) auto 18px;
-    gap: 10px;
-    align-items: center;
-    padding: 20px 0;
+  .detail summary {
+    display: inline-block;
     cursor: pointer;
     list-style: none;
+    border-bottom: 1px solid #111;
+    padding-bottom: 3px;
   }
 
-  .course summary::-webkit-details-marker {
+  .detail summary::-webkit-details-marker {
     display: none;
   }
 
-  .course summary:hover .course-title {
-    color: #6a4eb3;
+  .detail-content {
+    text-align: left;
+    margin-top: 15px;
+    padding: 15px;
+    background: #f5f5f5;
   }
 
-  .course summary:focus-visible {
-    outline: 2px solid #8061c8;
-    outline-offset: 2px;
+  .detail-content p {
+    font-size: 12px;
+    line-height: 1.7;
   }
 
-  .course-name {
+
+  /* ARCHITECTURE */
+
+  .architecture {
+    height: 400px;
+    background: #e5e5e5;
+    position: relative;
+    overflow: hidden;
     display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 2px 12px;
+    justify-content: center;
+    align-items: flex-end;
   }
 
-  .course-title {
-    font-family: Georgia, serif;
-    font-size: 23px;
-    line-height: 1.2;
-    letter-spacing: -.4px;
+  .architecture-title {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    white-space: nowrap;
+    font-size: clamp(65px, 8vw, 112px);
+    font-weight: 600;
+    letter-spacing: -6px;
+    line-height: 1;
+    color: #000;
   }
 
-  .course-ko {
-    color: #77747c;
-    font-size: 12px;
+  .architecture img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 78%;
+    object-fit: cover;
+    object-position: center;
+    mix-blend-mode: multiply;
   }
 
-  .toggle::before {
-    content: "+";
-    color: #8061c8;
-    font-size: 20px;
+  .image-caption {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    z-index: 3;
+    font-family: "Courier New", monospace;
+    font-size: 8px;
+    letter-spacing: 1px;
   }
 
-  .course[open] .toggle::before {
-    content: "–";
+
+  /* TEAM */
+
+  .team-section {
+    margin-top: 145px;
+    padding-bottom: 80px;
   }
 
-  .course dl {
-    margin: 0;
-    padding: 0 0 22px 44px;
-  }
-
-  .course dl div {
+  .team-heading {
     display: grid;
-    grid-template-columns: 112px minmax(0, 1fr);
-    gap: 12px;
-    padding: 8px 0;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    margin-bottom: 30px;
   }
 
-  .course dt {
-    color: #8b8791;
-    font-size: 12px;
-    line-height: 1.7;
-  }
-
-  .course dd {
+  .team-heading h2 {
+    font-family: "Courier New", monospace;
+    font-size: 20px;
+    font-weight: 600;
     margin: 0;
-    color: #4e4b53;
-    font-size: 13px;
-    line-height: 1.7;
   }
 
-  .principle {
-    border-top: 1px solid #cfc9d8;
-    padding-top: 20px;
+  .team-heading p {
+    max-width: 380px;
+    font-family: "Courier New", monospace;
+    color: #777;
+    font-size: 11px;
+    line-height: 1.6;
+    margin: 0;
   }
 
-  .number {
-    color: #8061c8;
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.5%;
+    margin-left: 28%;
+  }
+
+  .team-member {
+    min-width: 0;
+  }
+
+  .member-image {
+    width: 100%;
+    aspect-ratio: 0.83;
+    background: #e5e5e5;
+    overflow: hidden;
+  }
+
+  .member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+  }
+
+  .team-member:hover .member-image img {
+    filter: grayscale(0%);
+  }
+
+  .member-info {
+    padding-top: 15px;
+    font-family: "Courier New", monospace;
+  }
+
+  .member-number {
+    font-size: 10px;
+    color: #888;
+  }
+
+  .member-info h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 8px 0;
+  }
+
+  .member-role {
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: #888;
+  }
+
+  .member-info p {
+    font-size: 11px;
+    line-height: 1.6;
+    color: #666;
+  }
+
+  .team-note {
+    margin: 30px 0 0 28%;
+    font-family: "Courier New", monospace;
+    font-size: 9px;
+    color: #999;
+    letter-spacing: 1px;
+  }
+
+
+  /* CLOSING */
+
+  .closing {
+    padding: 90px 0;
+    border-top: 1px solid #ddd;
+  }
+
+  .closing > p {
+    font-family: "Courier New", monospace;
     font-size: 11px;
   }
 
-  .principle h3 {
-    font-family: Georgia, serif;
-    font-size: 27px;
-    font-weight: 400;
-    margin: 30px 0 15px;
-  }
-
-  .closing {
-    padding: 110px 0;
-  }
-
   .closing h2 {
-    font-size: clamp(48px, 7vw, 78px);
-    margin: 25px 0 35px;
+    font-size: clamp(45px, 7vw, 85px);
+    letter-spacing: -4px;
+    font-weight: 500;
+    line-height: 1.05;
   }
 
   .closing a {
-    color: #8061c8;
-    text-decoration: none;
+    color: #111;
+    font-family: "Courier New", monospace;
     font-size: 10px;
-    letter-spacing: 1.5px;
+    text-decoration: none;
+    border-bottom: 1px solid #111;
+    padding-bottom: 5px;
   }
 
+
+  /* FOOTER */
+
+  footer {
+    min-height: 55px;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #aaa;
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+  }
+
+  footer a {
+    color: #111;
+    text-decoration: none;
+  }
+
+
+  /* MOBILE */
+
   @media (max-width: 700px) {
-    main {
-      padding: 0 6%;
+
+    .site-frame {
+      width: calc(100% - 24px);
+      margin: 12px auto;
     }
 
-    .hero {
-      padding: 85px 0;
+    .about-hero {
+      padding-top: 45px;
     }
 
-    h1 {
-      letter-spacing: -2px;
+    .about-hero h1 {
+      font-size: 68px;
+      letter-spacing: -4px;
     }
 
-    .manifesto, .principles {
+    .intro-grid {
       grid-template-columns: 1fr;
       gap: 30px;
-      padding: 65px 0;
     }
 
-    .principle-list, .tenets, .directions, .area {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 26px;
+    .intro-text {
+      padding-top: 10px;
     }
 
-    .area {
-      gap: 10px;
+    .architecture {
+      height: 300px;
     }
 
-    .manifesto {
-      scroll-margin-top: 125px;
+    .architecture-title {
+      font-size: 65px;
+      letter-spacing: -4px;
     }
 
-    .closing a {
-      display: inline-block;
-      padding: 8px 0;
+    .team-section {
+      margin-top: 85px;
     }
 
-    .week li {
-      grid-template-columns: 38px minmax(0, 1fr);
+    .team-heading {
+      grid-template-columns: 1fr;
+      gap: 15px;
     }
 
-    .detail {
-      grid-column: 2;
+    .team-grid {
+      grid-template-columns: 1fr 1fr;
+      margin-left: 0;
+      gap: 25px 15px;
     }
 
-    .course summary {
-      grid-template-columns: 26px minmax(0, 1fr) 18px;
-    }
-
-    .course summary :global(.badge) {
-      grid-column: 2;
-      grid-row: 2;
-      justify-self: start;
-    }
-
-    .toggle {
-      grid-column: 3;
-      grid-row: 1;
-    }
-
-    .course dl {
-      padding-left: 0;
-    }
-
-    .course dl div {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 2px;
+    .team-note {
+      margin-left: 0;
     }
 
     .closing {
-      padding: 75px 0;
+      padding: 65px 0;
+    }
+
+    footer {
+      font-size: 9px;
     }
   }
+
+  @media (max-width: 400px) {
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .team-section {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+}
+
+.team-heading {
+  display: block;
+}
+
+.team-grid {
+  margin-left: 0;
+}
+
+.team-note {
+  grid-column: 2;
+  margin-left: 0;
+}
+
+@media (max-width: 700px) {
+  .team-section {
+    grid-template-columns: 1fr;
+  }
+
+  .team-note {
+    grid-column: 1;
+  }
+}
 </style>
